@@ -84,26 +84,32 @@ No CSS change is needed — `--font-body` already lists `"Acumin Pro"` first.
 
 ### Logo
 
-The masthead uses `assets/img/vl-main-logo.png` (2000×1285, transparent PNG).
+The masthead uses `assets/img/vl-main-logo.png` — the **knockout (white)**
+version, 425×258 transparent PNG. The brand guidelines assign knockout white to
+dark backgrounds, so it sits directly on the DeepMerlot masthead with no plate
+or box behind it. The masthead's own padding provides the clear space.
 
-**It sits on a white plate, and that is deliberate.** The supplied file is the
-*4C combo* version, which the brand guidelines assign to **light** backgrounds —
-its "LOUDOUN" wordmark is DeepMerlot, the same color as the masthead behind it.
-Placed directly on the merlot, the wordmark would disappear. The guidelines call
-for the **knockout (white)** logo on dark backgrounds, so until that file is on
-hand the white plate supplies the contrast the guidelines require, without
-altering the artwork. The plate's padding is the clear-space rule (the height of
-the "L" in LOUDOUN) rounded up.
+Displayed at 240px wide (180px ≤720px, 150px ≤400px), which gives roughly 1.8×
+pixel density on the 425px source — sharp on high-DPI screens.
 
-**If you obtain the knockout white logo**, this gets simpler and more correct:
-point the `<img>` at the new file and delete `background`, `padding` and
-`border-radius` from `.masthead__logo` in the stylesheet. The logo then sits
-directly on the merlot, which is what the guidelines prefer.
+**Because the artwork is pure white it is invisible on white.** Two consequences
+worth knowing before you move it anywhere:
 
-Per the brand guidelines, the logo must be used as provided and cannot be
-modified without permission — no recoloring, no opacity changes, no distortion.
-Putting it on a white background is not a modification; recoloring it to white
-would be.
+- It is **hidden in the print stylesheet**, since the masthead turns white on
+  paper and the logo would print as a blank gap. If a printed copy needs the
+  mark, swap the 4C combo version in for print.
+- If you ever place the logo on a light background, use the **4C combo** file
+  rather than putting a colored box behind this one.
+
+Per the brand guidelines the logo must be used as provided — no recoloring, no
+opacity changes, no distortion. Choosing the correct supplied variant for the
+background is the intended way to handle contrast.
+
+> **Swapping the logo file later:** if you replace the image but keep the same
+> filename, browsers (and GitHub Pages' CDN) will keep serving the cached old
+> one. Hard-refresh with **Ctrl+F5** to confirm. If it still looks stale for
+> other people, rename the file — `vl-main-logo-v2.png` — and update the `src`;
+> a new URL cannot be served from cache.
 
 ---
 

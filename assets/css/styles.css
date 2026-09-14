@@ -196,24 +196,17 @@ button:focus-visible {
 }
 
 /* Logo.
-   vl-main-logo.png is the 4C combo version, which the brand guidelines assign
-   to LIGHT backgrounds — its "LOUDOUN" wordmark is DeepMerlot, the same color
-   as this masthead, so on merlot it would disappear. The guidelines call for
-   the knockout (white) logo on dark backgrounds; until that file is available
-   the logo sits on a white plate, which gives it the contrast the guidelines
-   require without altering the artwork itself.
-   The padding is the clear-space rule (the height of the "L" in LOUDOUN, which
-   is ~20 percent of the artwork height) rounded up.
+   vl-main-logo.png is the knockout (white) version, which the brand guidelines
+   assign to dark backgrounds — so it sits directly on the merlot masthead with
+   no plate behind it. The masthead's own padding provides the clear space.
 
-   IF YOU GET THE KNOCKOUT WHITE LOGO: point the <img> at it and delete the
-   background, padding and border-radius below — it then sits directly on the
-   merlot, which is what the guidelines actually prefer. */
+   NOTE: because the artwork is pure white, it is invisible on white. If this
+   logo is ever moved onto a light background, swap in the 4C combo version
+   instead of putting a colored box behind this one. It is also hidden in the
+   print stylesheet for the same reason. */
 .masthead__logo {
   flex: 0 0 auto;
-  width: 280px;
-  background: var(--white);
-  padding: var(--space-7);
-  border-radius: var(--radius);
+  width: 240px;
 }
 
 .masthead__logo img {
@@ -573,7 +566,7 @@ button:focus-visible {
   .masthead__inner { gap: var(--space-7); align-items: flex-start; }
   .masthead__lede { margin-bottom: var(--space-6); }
 
-  .masthead__logo { width: 200px; padding: var(--space-6); }
+  .masthead__logo { width: 180px; }
 
   .section { padding-block: var(--space-8); }
   .section__head { margin-bottom: var(--space-7); padding-bottom: var(--space-5); }
@@ -611,18 +604,17 @@ button:focus-visible {
 }
 
 @media (max-width: 400px) {
-  .masthead__logo { width: 170px; padding: var(--space-5); }
+  .masthead__logo { width: 150px; }
 }
 
 /* -------------------------------------------------------------------------
    13. Print
    ------------------------------------------------------------------------- */
 @media print {
-  .sectionnav, .skip-link { display: none !important; }
-
-  /* The logo now prints. Its white plate is pointless on white paper, and the
-     masthead goes white in print anyway, so strip it back to bare artwork. */
-  .masthead__logo { width: 200px; background: none; padding: 0; }
+  /* The logo is hidden in print: the artwork is pure white and the masthead
+     turns white on paper, so it would print as a blank gap. Swap in the 4C
+     combo logo here if a printed copy needs the mark. */
+  .sectionnav, .skip-link, .masthead__logo { display: none !important; }
   body { background: #fff; font-size: 11pt; }
   .masthead { background: #fff; color: #000; border-top: 0; padding-block: 0 20pt; }
   .masthead h1, .masthead .eyebrow, .masthead__lede, .masthead__meta { color: #000; }
