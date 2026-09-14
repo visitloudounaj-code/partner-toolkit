@@ -195,31 +195,30 @@ button:focus-visible {
   margin: 0;
 }
 
-/* Logo placeholder — replace with a real <img> when assets are dropped in */
-.logo-slot {
+/* Logo.
+   vl-main-logo.png is the 4C combo version, which the brand guidelines assign
+   to LIGHT backgrounds — its "LOUDOUN" wordmark is DeepMerlot, the same color
+   as this masthead, so on merlot it would disappear. The guidelines call for
+   the knockout (white) logo on dark backgrounds; until that file is available
+   the logo sits on a white plate, which gives it the contrast the guidelines
+   require without altering the artwork itself.
+   The padding is the clear-space rule (the height of the "L" in LOUDOUN, which
+   is ~20 percent of the artwork height) rounded up.
+
+   IF YOU GET THE KNOCKOUT WHITE LOGO: point the <img> at it and delete the
+   background, padding and border-radius below — it then sits directly on the
+   merlot, which is what the guidelines actually prefer. */
+.masthead__logo {
   flex: 0 0 auto;
-  width: 230px;
-  min-height: 140px;
-  display: grid;
-  place-content: center;
-  text-align: center;
-  gap: var(--space-1);
-  padding: var(--space-6);
-  border: 2px dashed rgba(255, 255, 255, .35);
+  width: 280px;
+  background: var(--white);
+  padding: var(--space-7);
   border-radius: var(--radius);
-  color: rgba(255, 255, 255, .8);
-  font-size: 12px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  font-weight: 700;
 }
 
-.logo-slot span {
-  font-weight: 400;
-  letter-spacing: .02em;
-  text-transform: none;
-  font-size: 12px;
-  opacity: .7;
+.masthead__logo img {
+  width: 100%;
+  height: auto;
 }
 
 /* -------------------------------------------------------------------------
@@ -574,7 +573,7 @@ button:focus-visible {
   .masthead__inner { gap: var(--space-7); align-items: flex-start; }
   .masthead__lede { margin-bottom: var(--space-6); }
 
-  .logo-slot { width: 180px; min-height: 104px; padding: var(--space-5); }
+  .masthead__logo { width: 200px; padding: var(--space-6); }
 
   .section { padding-block: var(--space-8); }
   .section__head { margin-bottom: var(--space-7); padding-bottom: var(--space-5); }
@@ -612,14 +611,18 @@ button:focus-visible {
 }
 
 @media (max-width: 400px) {
-  .logo-slot { width: 160px; min-height: 96px; }
+  .masthead__logo { width: 170px; padding: var(--space-5); }
 }
 
 /* -------------------------------------------------------------------------
    13. Print
    ------------------------------------------------------------------------- */
 @media print {
-  .sectionnav, .logo-slot, .skip-link { display: none !important; }
+  .sectionnav, .skip-link { display: none !important; }
+
+  /* The logo now prints. Its white plate is pointless on white paper, and the
+     masthead goes white in print anyway, so strip it back to bare artwork. */
+  .masthead__logo { width: 200px; background: none; padding: 0; }
   body { background: #fff; font-size: 11pt; }
   .masthead { background: #fff; color: #000; border-top: 0; padding-block: 0 20pt; }
   .masthead h1, .masthead .eyebrow, .masthead__lede, .masthead__meta { color: #000; }

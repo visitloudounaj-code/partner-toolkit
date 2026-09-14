@@ -15,7 +15,7 @@ attractions, venues and wedding professionals.
 | `index.html` | The entire site. One page, six anchored sections. |
 | `assets/css/styles.css` | All styling. Brand palette is defined as CSS custom properties at the top. |
 | `assets/js/nav.js` | Highlights the sticky nav link for the section in view. Progressive enhancement — the site works fully without it. |
-| `assets/img/` | Drop logo and photography here. Currently empty. |
+| `assets/img/` | `vl-main-logo.png` (masthead logo). Add photography here too. |
 | `.nojekyll` | Tells GitHub Pages to serve files as-is. |
 
 No build step, no dependencies, no framework. Open `index.html` in a browser and it works.
@@ -84,15 +84,26 @@ No CSS change is needed — `--font-body` already lists `"Acumin Pro"` first.
 
 ### Logo
 
-The masthead currently shows a dashed placeholder block. To swap in the real logo,
-drop the file into `assets/img/` and replace the `.logo-slot` div in `index.html`:
+The masthead uses `assets/img/vl-main-logo.png` (2000×1285, transparent PNG).
 
-```html
-<img src="assets/img/visit-loudoun-logo.svg" alt="Visit Loudoun" width="240">
-```
+**It sits on a white plate, and that is deliberate.** The supplied file is the
+*4C combo* version, which the brand guidelines assign to **light** backgrounds —
+its "LOUDOUN" wordmark is DeepMerlot, the same color as the masthead behind it.
+Placed directly on the merlot, the wordmark would disappear. The guidelines call
+for the **knockout (white)** logo on dark backgrounds, so until that file is on
+hand the white plate supplies the contrast the guidelines require, without
+altering the artwork. The plate's padding is the clear-space rule (the height of
+the "L" in LOUDOUN) rounded up.
 
-Per the brand guidelines, the logo must be used as provided and cannot be modified
-without permission.
+**If you obtain the knockout white logo**, this gets simpler and more correct:
+point the `<img>` at the new file and delete `background`, `padding` and
+`border-radius` from `.masthead__logo` in the stylesheet. The logo then sits
+directly on the merlot, which is what the guidelines prefer.
+
+Per the brand guidelines, the logo must be used as provided and cannot be
+modified without permission — no recoloring, no opacity changes, no distortion.
+Putting it on a white background is not a modification; recoloring it to white
+would be.
 
 ---
 
